@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantaloons | Fashion Store</title>
 
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         * {
             margin: 0;
@@ -19,29 +22,27 @@
             color: #333;
         }
 
-        /* HEADER */
-     .header {
-            background: #fff;
-            padding: 20px 60px;
+        /* ================= HEADER ================= */
+        .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             color: #ff523b;
-            letter-spacing: 1px;
         }
 
         nav {
             display: flex;
-            align-items: center;
             gap: 25px;
         }
 
@@ -49,43 +50,379 @@
             text-decoration: none;
             color: #555;
             font-weight: 500;
-            transition: 0.3s;
-            position: relative;
         }
 
         nav a:hover {
-            color: #ff523b;
+            color: #ff523b
         }
 
-        nav a::after {
-            content: '';
-            width: 0%;
-            height: 2px;
-            background: #ff523b;
-            display: block;
-            margin-top: 4px;
-            transition: 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .cart {
-            font-size: 18px;
+        .header-icons {
+            display: flex;
+            gap: 18px;
+            font-size: 20px;
             cursor: pointer;
+        }
+
+        /* MOBILE NAV */
+        @media(max-width:768px) {
+            nav {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                display: none;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
+            }
+
+            nav.show {
+                display: flex
+            }
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
+                url("https://images.unsplash.com/photo-1521335629791-ce4aec67dd47") center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h2 {
+            font-size: 48px
+        }
+
+        /* ================= CATEGORY ================= */
+        .category-slider {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .category-slider::-webkit-scrollbar {
+            display: none
+        }
+
+        .category {
+            min-width: 140px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+        }
+
+        .category img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* ================= PROMO ================= */
+        .promo {
+            max-width: 320px;
+            margin: 30px auto;
             position: relative;
         }
 
-        .cart span {
+        .promo img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .promo-text {
             position: absolute;
-            top: -10px;
-            right: -12px;
-            background: #ff523b;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: #ffffffdd;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .promo-text h2 {
+            color: red
+        }
+
+        /* ================= PRODUCTS ================= */
+        section {
+            padding: 60px 40px;
+            background: rgba(255, 0, 0, .85);
+        }
+
+        section p {
+            text-align: center;
+            font-size: 32px;
             color: #fff;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+        }
+
+        .products::-webkit-scrollbar {
+            display: none
+        }
+
+        .product {
+            min-width: 260px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+        }
+
+        .product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background: red
+        }
+
+        /* ================= JUST IN ================= */
+        .justin-section {
+            background: #fff;
+            padding: 30px;
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+        }
+
+        .left-panel {
+            min-width: 220px;
+        }
+
+        .left-panel h1 {
+            font-size: 72px
+        }
+
+        .product-card {
+            min-width: 220px;
+        }
+
+        .product-img {
+            position: relative;
+            background: #f1f1f1;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%
+        }
+
+        .tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ffc107;
+            padding: 6px 8px;
             font-size: 12px;
-            padding: 2px 6px;
+            font-weight: 600;
+        }
+
+        .icons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 36px;
+            height: 36px;
+            background: #fff;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promo {
+            max-width: 320px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .promo img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .promo-text {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: #ffffffdd;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .promo-text h2 {
+            color: red
+        }
+
+        /* ================= PRODUCTS ================= */
+        section {
+            padding: 60px 40px;
+            background: rgba(255, 0, 0, .85);
+        }
+
+        section p {
+            text-align: center;
+            font-size: 32px;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+        }
+
+        .products::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product {
+            min-width: 260px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+            overflow: hidden;
+        }
+
+        .product img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background: red
+        }
+
+        /* ================= JUST IN ================= */
+        .justin-section {
+            background: #fff;
+            padding: 30px;
+            display: flex;
+            gap: 30px;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            min-width: 220px;
+        }
+
+        .left-panel h1 {
+            font-size: 72px;
+        }
+
+        .product-row {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+        }
+
+        .product-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            min-width: 220px;
+        }
+
+        .product-img {
+            position: relative;
+            background: #f1f1f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+        }
+
+        .tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ffc107;
+            padding: 6px 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-img .icons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* HERO */
@@ -639,83 +976,69 @@
                 font-size: 26px
             }
         }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #000;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
     </style>
 </head>
 
 <body>
 
-<div class="header">
-    <div class="logo">REDSTORE</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="muthu.html">Products</a>
-        <a href="#">About</a>
-        <a href="logon.html">Contact</a>
-        <a href="fdb.html">Account</a>
-    </nav>
-</div>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">REDSTORE</div>
+        <nav id="nav">
+            <a href="index.html">Home</a>
+            <a href="muthu.html">Products</a>
+            <a href="#">About</a>
+            <a href="logon.html">Contact</a>
+            <a href="fdb.html">Account</a>
+        </nav>
+        <div class="header-icons">
+            <!-- <i class="fa-solid fa-cart-shopping"></i> -->
+            <i class="fa-solid fa-bars" id="menuBtn"></i>
+        </div>
+    </div>
 
+    <!-- HERO -->
     <div class="hero">
         <div>
             <h2>New Season Styles</h2>
             <p>Discover fashion for every occasion</p>
-
         </div>
     </div>
 
+    <!-- CATEGORIES -->
     <div class="category-slider">
         <div class="category"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
             <h3>Men</h3>
         </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
-            <h3>Kids</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246">
-            <h3>Trendy</h3>
-        </div>
         <div class="category"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
             <h3>Women</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
-            <h3>Men</h3>
         </div>
         <div class="category"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
             <h3>Kids</h3>
         </div>
         <div class="category"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246">
             <h3>Trendy</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
-            <h3>Women</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
-            <h3>Men</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
-            <h3>Kids</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246">
-            <h3>Trendy</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
-            <h3>Women</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
-            <h3>Men</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
-            <h3>Kids</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246">
-            <h3>Trendy</h3>
-        </div>
-        <div class="category"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
-            <h3>Women</h3>
         </div>
     </div>
 
+    <!-- PROMO -->
+    <div class="promo">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+        <div class="promo-text">
+            <h4>Denim Must-Have</h4>
+            <p>Up to 50% Off</p>
+            <h2>SHOP NOW</h2>
+        </div>
     </div>
-
 
     <!-- PROMOS -->
     <div class="promo">
@@ -906,12 +1229,12 @@
 
         <!-- PRODUCTS -->
         <div class="product-row">
-<div class="left-panel">
-    <h2>Just In</h2>
-    <h1>764</h1>
-    <p>NEW STYLES JUST LANDED</p>
-    <a href="#" class="shop-now">SHOP NOW ▶</a>
-</div>
+            <div class="left-panel">
+                <h2>Just In</h2>
+                <h1>764</h1>
+                <p>NEW STYLES JUST LANDED</p>
+                <a href="#" class="shop-now">SHOP NOW ▶</a>
+            </div>
             <div class="product-card">
                 <div class="product-img">
                     <span class="tag">Just In</span>
@@ -1179,9 +1502,9 @@
         <h1>New Arrivals</h1>
         <p>Based On Your Recent Activity</p>
     </div>
-    
+
     <div class="products">
-    
+
         <!-- CARD -->
         <div class="card">
             <div class="card-img">
@@ -1198,7 +1521,7 @@
                 <div class="price">₹299 <span class="old-price">₹399</span><span class="off">25% OFF</span></div>
             </div>
         </div>
-    
+
         <div class="card">
             <div class="card-img">
                 <span class="tag">Just In</span>
@@ -1214,7 +1537,7 @@
                 <div class="price">₹299</div>
             </div>
         </div>
-    
+
         <div class="card">
             <div class="card-img">
                 <span class="tag">Just In</span>
@@ -1305,7 +1628,7 @@
                 <div class="price">₹299 <span class="old-price">₹399</span><span class="off">25% OFF</span></div>
             </div>
         </div>
-    
+
         <div class="card">
             <div class="card-img">
                 <span class="tag">Just In</span>
@@ -1321,13 +1644,20 @@
                 <div class="price">₹599</div>
             </div>
         </div>
-    
+
     </div>
 
 
+    <!-- FOOTER -->
     <footer>
         © 2026 Pantaloons Fashion Store. All Rights Reserved.
     </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const nav = document.getElementById("nav");
+        menuBtn.onclick = () => nav.classList.toggle("show");
+    </script>
 
 </body>
 
