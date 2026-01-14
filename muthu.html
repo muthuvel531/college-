@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RedStore | Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,28 +14,26 @@
             padding: 0;
             background: #f9f9f9;
         }
-            .header {
-            background: #fff;
-            padding: 20px 60px;
+       .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             color: #ff523b;
-            letter-spacing: 1px;
         }
 
         nav {
             display: flex;
-            align-items: center;
             gap: 25px;
         }
 
@@ -41,26 +41,37 @@
             text-decoration: none;
             color: #555;
             font-weight: 500;
-            transition: 0.3s;
-            position: relative;
         }
 
         nav a:hover {
-            color: #ff523b;
+            color: #ff523b
         }
 
-        nav a::after {
-            content: '';
-            width: 0%;
-            height: 2px;
-            background: #ff523b;
-            display: block;
-            margin-top: 4px;
-            transition: 0.3s;
+        .header-icons {
+            display: flex;
+            gap: 18px;
+            font-size: 20px;
+            cursor: pointer;
         }
 
-        nav a:hover::after {
-            width: 100%;
+        /* MOBILE NAV */
+        @media(max-width:768px) {
+            nav {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                display: none;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
+            }
+
+            nav.show {
+                display: flex
+            }
         }
 
         .cart {
@@ -176,17 +187,23 @@
 </head>
 
 <body>
-
 <div class="header">
     <div class="logo">REDSTORE</div>
-    <nav>
+
+    <nav id="nav">
         <a href="index.html">Home</a>
         <a href="muthu.html">Products</a>
         <a href="#">About</a>
         <a href="logon.html">Contact</a>
         <a href="fdb.html">Account</a>
     </nav>
+
+    <div class="header-icons">
+        <!-- <i class="fa-solid fa-cart-shopping"></i> -->
+        <i class="fa-solid fa-bars" id="menuBtn"></i>
+    </div>
 </div>
+
     <div class="container">
         <div class="top-bar">
             <h2>All Products</h2>
@@ -308,6 +325,13 @@
     </div>
 
     <script>
+
+        
+            const menuBtn = document.getElementById("menuBtn");
+            const nav = document.getElementById("nav");
+
+            menuBtn.onclick = () => nav.classList.toggle("show");
+
         const sortSelect = document.getElementById('sort');
         const products = Array.from(document.querySelectorAll('.product-card'));
 
